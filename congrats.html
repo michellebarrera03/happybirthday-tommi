@@ -10,16 +10,23 @@
       font-family: 'Playfair Display', serif;
       color: #5b21b6;
       text-align: center;
-      padding-top: 150px;
+      padding: 100px 20px; /* top/bottom and left/right padding */
     }
+
     h1 {
       font-size: 3em;
+      margin-bottom: 30px;
     }
+
     p {
       font-size: 1.2em;
+      line-height: 1.6;
+      max-width: 700px; /* keeps paragraph from being too wide */
+      margin: 0 auto 40px auto; /* centers it horizontally */
     }
+
     button {
-      margin-top: 40px;
+      margin-top: 20px;
       padding: 12px 24px;
       border: none;
       border-radius: 12px;
@@ -29,14 +36,21 @@
       cursor: pointer;
       transition: 0.3s;
     }
+
     button:hover {
       background-color: #7c3aed;
     }
   </style>
 </head>
 <body>
-  <h1> Happy Birthday Tommi <3</h1>
-  <p> I know today is your birthday and all, and i do wish you the best in life. But i really want you to know that i've grown to really like you these past months.. thank you for letting me be a part of your life now. I enjoy talking to you and getting to learn more about you. I hope one day we can celebrate your birthday together in person. <3</p>
+  <h1>Happy Birthday Tommi &lt;3</h1>
+  <p>
+    I know today is your birthday and all, and I do wish you the best in life.
+    But I really want you to know that I've grown to really like you these past
+    months. Thank you for letting me be a part of your life now. I enjoy talking
+    to you and getting to learn more about you. I hope one day we can celebrate
+    your birthday together in person. &lt;3
+  </p>
   <button onclick="window.location.href='index.html'">Back to Home</button>
 </body>
 </html>

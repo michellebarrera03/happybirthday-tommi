@@ -1,0 +1,86 @@
+/* styles.css */
+
+html {
+      padding-top: 25px;
+      background-color:#bde0ff
+}
+
+body {
+     width:80%;
+     padding: 20px;
+     margin: 0 auto;
+     border-radius:10px;
+     box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+     background-color: #f0f8ff;
+	background-image: radial-gradient(circle, rgba(87, 125, 171, 0.15) 50%, transparent 51%);
+background-size: 200px 200px;
+	
+}
+
+
+h1 {
+       font-family: "Titan One", sans-serif;
+       font-weight: 400;
+      font-optical-sizing: auto;
+      font-style: normal; 	
+     color: #555555;
+     font-size:3em;
+     margin:0;
+	text-align: center;
+     }
+h2 {
+       font-family: "Titan One", sans-serif;
+       font-weight: 400;
+      font-optical-sizing: auto;
+      font-style: normal; 	
+     color: #577DAB;
+     font-size:2em;
+     margin:0;
+	text-align: center;
+     }
+p {
+      font-family: "Candal", sans-serif;
+     font-weight: 400;
+     font-style: normal;
+ 	 color: #616161;
+	line-height: 150%;
+	margin-top: 10px;
+	margin-left: 250px;
+	font-size: 2em;
+	text-align: center;
+      }
+ul { 
+
+      font-family: "Turret Road", sans-serif;
+	  text-align: center;
+	  list-style-position:inside; 
+      font-weight: 800;
+      font-style: normal;
+      font-size: 30px;
+      color: darked;
+      list-style-type: disc;
+      line-height: 1.6;
+	
+}
+
+
+img{
+	display: block;
+	margin-left:auto;
+	margin-right: 0:
+}
+
+
+     
+p {
+  font-family: "Candal", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #27394E;
+  line-height: 150%;
+  margin-top: 10px;
+  margin-left: 60px;
+  text-align: center;
+  font-size: 24px;
+}
+

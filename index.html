@@ -1,16 +1,100 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Website Template</title>
-	<link rel="stylesheet" href="./assets/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Tommy 🎂</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Quicksand:wght@400;600&display=swap');
+
+    body {
+      background: linear-gradient(180deg, #f3e8ff, #d8b4fe);
+      font-family: 'Quicksand', sans-serif;
+      color: #5e3a84;
+      text-align: center;
+      overflow: hidden;
+      margin: 0;
+      height: 100vh;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      margin-top: 50px;
+      color: #7e22ce;
+      text-shadow: 2px 2px #f0d9ff;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-top: -10px;
+    }
+
+    .floating-img {
+      position: absolute;
+      width: 100px;
+      cursor: pointer;
+      animation: float 8s infinite ease-in-out;
+      transition: transform 0.2s;
+    }
+
+    .floating-img:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-50px) rotate(10deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    .decor {
+      position: absolute;
+      opacity: 0.3;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      font-size: 0.9em;
+      color: #7e22ce;
+    }
+  </style>
 </head>
 <body>
+  <h1>Happy Birthday, Tommy! 💜</h1>
+  <p>You deserve all the sparkles and love today 🎀</p>
 
-	<h1>Website Template</h1>
-	<p>Fork and use this template repo (a.k.a. "boilerplate") for any web project</p>
-	<img src="assets/img/cat.jpg" alt="">
+  <!-- You can replace these image URLs with your own -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Lavender_flower_1.jpg/240px-Lavender_flower_1.jpg" 
+       class="floating-img" id="catchMe" 
+       style="top: 300px; left: 40%;" 
+       alt="floating surprise">
 
-	<script src="./assets/js/main.js"></script>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Pink_bow.svg/512px-Pink_bow.svg.png"
+       class="decor" style="top: 10%; left: 5%; width: 80px;" alt="bow">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Pink_bow.svg/512px-Pink_bow.svg.png"
+       class="decor" style="bottom: 10%; right: 5%; width: 80px;" alt="bow">
+
+  <footer>Made with love by Michelle 💌</footer>
+
+  <script>
+    // When Tommy clicks the floating image, redirect to the birthday page
+    document.getElementById("catchMe").addEventListener("click", function() {
+      alert("You caught the surprise! 💐");
+      window.location.href = "congrats.html"; // make this page next
+    });
+
+    // Optional: make image move randomly every few seconds
+    setInterval(() => {
+      const img = document.getElementById("catchMe");
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 150);
+      img.style.left = x + "px";
+      img.style.top = y + "px";
+    }, 3000);
+  </script>
 </body>
 </html>

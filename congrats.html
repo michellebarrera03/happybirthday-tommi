@@ -10,7 +10,7 @@
       font-family: 'Playfair Display', serif;
       color: #5b21b6;
       text-align: center;
-      padding: 100px 20px; /* top/bottom and left/right padding */
+      padding: 100px 20px;
     }
 
     h1 {
@@ -21,11 +21,11 @@
     p {
       font-size: 1.2em;
       line-height: 1.6;
-      max-width: 700px; /* keeps paragraph from being too wide */
-      margin: 0 auto 40px auto; /* centers it horizontally */
+      max-width: 700px;
+      margin: 0 auto 40px auto;
     }
 
-    button {
+    button, a.btn {
       margin-top: 20px;
       padding: 12px 24px;
       border: none;
@@ -33,40 +33,65 @@
       background-color: #a78bfa;
       color: white;
       font-size: 1em;
+      text-decoration: none;
       cursor: pointer;
       transition: 0.3s;
+      display: inline-block;
     }
 
-    button:hover {
+    button:hover, a.btn:hover {
       background-color: #7c3aed;
     }
+
     .cat-img {
-  width: 250px;          /* adjust size as needed */
-  border-radius: 12px;   /* soft corners */
-  float: right;           /* pushes it to the left side */
-}
+      width: 250px;
+      border-radius: 12px;
+      float: right;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.9em;
+    }
   </style>
 </head>
 <body>
   <h1>Happy Birthday Tommi &lt;3</h1>
   <p><strong>HAPPY HAPPY BIRTHDAY TOMMI !!!!!</strong> Today a very special boy was born.
-   A boy that is kind, sweet, and just. I am very happy to be a part of your life again, and if you continue to let me, I promise to do my best at keeping you happy.. although I think i might need you more than you'll need me :) 
+   A boy that is kind, sweet, and just. I am very happy to be a part of your life again, and if you continue to let me, I promise to do my best at keeping you happy.. although I think I might need you more than you'll need me :) 
     But I really want you to know that I've grown to really like you these past
     months. Thank you for letting me be a part of your life now. I enjoy talking
     to you and getting to learn more about you. I hope one day we can celebrate
     your birthday together in person. &lt;3
   </p>
 
-   <!-- Download Button -->
-  <a href="note/PCF.pdf" download class="btn"> Download Your Surprise</a>
+  <!-- Download Button with Popup -->
+  <a href="#" class="btn" id="downloadBtn">Download Your Surprise</a>
 
   <!-- Back to home button -->
-  <button class="btn" onclick="window.location.href='index.html'">Back to Home</button>
-  <a href="surprise.html">
-  <img src="assets/img/cat.png" alt="cute cat" class="cat-img">
-</a>
+  <button onclick="window.location.href='index.html'">Back to Home</button>
 
+  <img src="assets/img/cat.png" alt="cute cat" class="cat-img">
 
   <footer>Made with love by Michelle ♡</footer>
+
+  <script>
+    document.getElementById("downloadBtn").addEventListener("click", function(event) {
+      event.preventDefault();
+
+      const message = `Before you download the PDF, please make sure you have some cardstock or thick paper on hand. I made you a small prayer card since you mentioned you’re Catholic.
+
+I actually have all my sacraments except one—I’m hoping to receive my last one with you by my side. I also want to wish you luck and protection from God.
+
+I know it might sound a little crazy coming from me, someone who isn’t super religious, but it doesn’t hurt to believe, right? And if there really is an afterlife, I’d like to meet you in every single one.
+
+If this feels too strong or too much, please let me know—no hard feelings! ( >_< )b`;
+
+      alert(message);
+
+      // Then start the download
+      window.location.href = "note/PCF.pdf";
+    });
+  </script>
 </body>
 </html>

@@ -27,9 +27,11 @@
 
     .ingredient {
       position: absolute;
-      font-size: 2.2em;
+      font-size: 3em; /* bigger emoji size */
       cursor: pointer;
       transition: transform 0.2s ease;
+      padding: 15px; /* invisible click area */
+      user-select: none;
     }
 
     .ingredient:hover {
@@ -41,7 +43,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) scale(0);
-      font-size: 7em;
+      font-size: 8em;
       opacity: 0;
       transition: all 1s ease;
       text-shadow: 0 0 40px #fff8dc, 0 0 80px #fef3c7;
@@ -81,7 +83,6 @@
     const game = document.getElementById("game");
     let caught = 0;
 
-    // create ingredients and make them move
     ingredients.forEach((icon) => {
       const el = document.createElement("div");
       el.classList.add("ingredient");
@@ -90,9 +91,9 @@
       el.style.left = Math.random() * 80 + "%";
       game.appendChild(el);
 
-      // movement
-      let dx = (Math.random() - 0.5) * 2.5;
-      let dy = (Math.random() - 0.5) * 2.5;
+      // Slightly slower and smoother motion
+      let dx = (Math.random() - 0.5) * 1.5; 
+      let dy = (Math.random() - 0.5) * 1.5;
 
       function move() {
         let rect = el.getBoundingClientRect();
@@ -110,9 +111,7 @@
           el.classList.add("caught");
           el.style.display = "none";
           caught++;
-          if (caught === ingredients.length) {
-            celebrate();
-          }
+          if (caught === ingredients.length) celebrate();
         }
       });
     });
@@ -121,10 +120,7 @@
       const cake = document.getElementById("cake");
       const message = document.getElementById("message");
       cake.classList.add("show");
-
-      setTimeout(() => {
-        message.classList.add("show");
-      }, 1500);
+      setTimeout(() => message.classList.add("show"), 1500);
     }
   </script>
 </body>

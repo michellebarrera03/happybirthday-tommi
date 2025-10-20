@@ -27,10 +27,10 @@
 
     .ingredient {
       position: absolute;
-      font-size: 3em; /* bigger emoji size */
+      font-size: 3em;
       cursor: pointer;
       transition: transform 0.2s ease;
-      padding: 15px; /* invisible click area */
+      padding: 15px;
       user-select: none;
     }
 
@@ -76,7 +76,10 @@
 
   <div id="game"></div>
   <div id="cake">🍰</div>
-  <div id="message">Enjoy a slice of this digital cake :,)<br> Sorry I'm not able to give you the real deal, but soon that won't be a problem ;))</div>
+  <div id="message">
+    Enjoy a slice of this digital cake :,)<br>
+    Sorry I'm not able to give you the real deal, but soon that won't be a problem ;))
+  </div>
 
   <script>
     const ingredients = ["🥚", "🧈", "🧂", "🌾", "🍫", "🍓", "🍼"];
@@ -87,21 +90,32 @@
       const el = document.createElement("div");
       el.classList.add("ingredient");
       el.textContent = icon;
-      el.style.top = Math.random() * 80 + "%";
-      el.style.left = Math.random() * 80 + "%";
+
+      // set random starting position
+      let x = Math.random() * (window.innerWidth - 80);
+      let y = Math.random() * (window.innerHeight - 100);
+      el.style.left = x + "px";
+      el.style.top = y + "px";
       game.appendChild(el);
 
-      // Slightly slower and smoother motion
-      let dx = (Math.random() - 0.5) * 1.5; 
-      let dy = (Math.random() - 0.5) * 1.5;
+      // smaller, smoother movement
+      let dx = (Math.random() - 0.5) * 1;
+      let dy = (Math.random() - 0.5) * 1;
 
       function move() {
-        let rect = el.getBoundingClientRect();
-        if (rect.left <= 0 || rect.right >= window.innerWidth) dx = -dx;
-        if (rect.top <= 0 || rect.bottom >= window.innerHeight) dy = -dy;
-        el.style.left = rect.left + dx + "px";
-        el.style.top = rect.top + dy + "px";
-        if (!el.classList.contains("caught")) requestAnimationFrame(move);
+        x += dx;
+        y += dy;
+
+        // bounce off edges
+        if (x <= 0 || x >= window.innerWidth - 80) dx = -dx;
+        if (y <= 0 || y >= window.innerHeight - 100) dy = -dy;
+
+        el.style.left = x + "px";
+        el.style.top = y + "px";
+
+        if (!el.classList.contains("caught")) {
+          requestAnimationFrame(move);
+        }
       }
 
       move();

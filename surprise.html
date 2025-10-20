@@ -3,29 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surprise!</title>
+  <title>Bake a Cake 🎂</title>
   <style>
     body {
-      background: linear-gradient(180deg, #fef3c7, #fde68a);
       font-family: 'Playfair Display', serif;
-      color: #92400e;
       text-align: center;
-      padding: 100px 20px;
+      background: linear-gradient(180deg, #fde68a, #f9a8d4);
+      color: #7c2d12;
+      padding: 50px 20px;
     }
 
     h1 {
-      font-size: 3em;
+      font-size: 2.5em;
       margin-bottom: 20px;
     }
 
-    p {
-      font-size: 1.3em;
+    .ingredients {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .item {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .item:hover {
+      transform: scale(1.1);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #message {
+      font-size: 1.6em;
+      margin-top: 40px;
+      color: #6d28d9;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>🎁 Surprise! 🎁</h1>
-  <p>You found the secret page, Tommi! 🐱💖</p>
-  <a href="index.html">Go back</a>
+  <h1>🍰 Help Tommi Bake His Birthday Cake! 🎉</h1>
+  <p>Click all the ingredients to collect them!</p>
+
+  <div class="ingredients">
+    <div class="item" onclick="collect(this)">🥚 Eggs</div>
+    <div class="item" onclick="collect(this)">🧈 Butter</div>
+    <div class="item" onclick="collect(this)">🧂 Sugar</div>
+    <div class="item" onclick="collect(this)">🌾 Flour</div>
+    <div class="item" onclick="collect(this)">🍫 Chocolate</div>
+  </div>
+
+  <div id="message" class="hidden">🎂 You collected everything! The cake is ready! 🎉</div>
+
+  <script>
+    let collected = 0;
+    function collect(el) {
+      el.classList.add('hidden');
+      collected++;
+      if (collected === 5) {
+        document.getElementById('message').classList.remove('hidden');
+      }
+    }
+  </script>
+
+  <br><br>
+  <a href="index.html">← Back to main page</a>
 </body>
 </html>

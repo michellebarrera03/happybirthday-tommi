@@ -1,82 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bake a Cake 🎂</title>
   <style>
     body {
+      margin: 0;
+      overflow: hidden;
+      height: 100vh;
       font-family: 'Playfair Display', serif;
-      text-align: center;
       background: linear-gradient(180deg, #fde68a, #f9a8d4);
-      color: #7c2d12;
-      padding: 50px 20px;
+      text-align: center;
+      color: #6d28d9;
     }
 
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
+      margin-top: 30px;
+      font-size: 2em;
     }
 
-    .ingredients {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 25px;
-      margin-top: 40px;
+    p {
+      margin-top: -10px;
+      color: #7c2d12;
     }
 
-    .item {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      padding: 20px;
+    .ingredient {
+      position: absolute;
+      font-size: 2.2em;
       cursor: pointer;
       transition: transform 0.2s ease;
     }
 
-    .item:hover {
-      transform: scale(1.1);
+    .ingredient:hover {
+      transform: scale(1.2);
     }
 
-    .hidden {
-      display: none;
+    #cake {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 7em;
+      opacity: 0;
+      transition: all 1s ease;
+      text-shadow: 0 0 40px #fff8dc, 0 0 80px #fef3c7;
+    }
+
+    #cake.show {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
     }
 
     #message {
-      font-size: 1.6em;
-      margin-top: 40px;
-      color: #6d28d9;
-      font-weight: bold;
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.5em;
+      max-width: 400px;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+
+    #message.show {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
-  <h1>🍰 Help Tommi Bake His Birthday Cake! 🎉</h1>
-  <p>Click all the ingredients to collect them!</p>
+  <h1>🎂 Catch all the ingredients to bake Tommi's cake!</h1>
+  <p>Click each one before it floats away 🍫🥚🧈🌾</p>
 
-  <div class="ingredients">
-    <div class="item" onclick="collect(this)">🥚 Eggs</div>
-    <div class="item" onclick="collect(this)">🧈 Butter</div>
-    <div class="item" onclick="collect(this)">🧂 Sugar</div>
-    <div class="item" onclick="collect(this)">🌾 Flour</div>
-    <div class="item" onclick="collect(this)">🍫 Chocolate</div>
-  </div>
-
-  <div id="message" class="hidden">🎂 You collected everything! The cake is ready! 🎉</div>
+  <div id="game"></div>
+  <div id="cake">🍰</div>
+  <div id="message">Enjoy a slice of this digital cake :,)<br> Sorry I'm not able to give you the real deal, but soon that won't be a problem ;))</div>
 
   <script>
-    let collected = 0;
-    function collect(el) {
-      el.classList.add('hidden');
-      collected++;
-      if (collected === 5) {
-        document.getElementById('message').classList.remove('hidden');
+    const ingredients = ["🥚", "🧈", "🧂", "🌾", "🍫", "🍓", "🍼"];
+    const game = document.getElementById("game");
+    let caught = 0;
+
+    // create ingredients and make them move
+    ingredients.forEach((icon) => {
+      const el = document.createElement("div");
+      el.classList.add("ingredient");
+      el.textContent = icon;
+      el.style.top = Math.random() * 80 + "%";
+      el.style.left = Math.random() * 80 + "%";
+      game.appendChild(el);
+
+      // movement
+      let dx = (Math.random() - 0.5) * 2.5;
+      let dy = (Math.random() - 0.5) * 2.5;
+
+      function move() {
+        let rect = el.getBoundingClientRect();
+        if (rect.left <= 0 || rect.right >= window.innerWidth) dx = -dx;
+        if (rect.top <= 0 || rect.bottom >= window.innerHeight) dy = -dy;
+        el.style.left = rect.left + dx + "px";
+        el.style.top = rect.top + dy + "px";
+        if (!el.classList.contains("caught")) requestAnimationFrame(move);
       }
+
+      move();
+
+      el.addEventListener("click", () => {
+        if (!el.classList.contains("caught")) {
+          el.classList.add("caught");
+          el.style.display = "none";
+          caught++;
+          if (caught === ingredients.length) {
+            celebrate();
+          }
+        }
+      });
+    });
+
+    function celebrate() {
+      const cake = document.getElementById("cake");
+      const message = document.getElementById("message");
+      cake.classList.add("show");
+
+      setTimeout(() => {
+        message.classList.add("show");
+      }, 1500);
     }
   </script>
-
-  <br><br>
-  <a href="index.html">← Back to main page</a>
 </body>
 </html>

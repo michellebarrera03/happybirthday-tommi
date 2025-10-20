@@ -79,22 +79,27 @@
   <footer>Made with love by Michelle ♡</footer>
 
   <script>
-    document.getElementById("downloadBtn").addEventListener("click", function(event) {
-      event.preventDefault();
+  document.getElementById("downloadBtn").addEventListener("click", function(event) {
+    event.preventDefault();
 
-      const message = `Before you download the PDF, please make sure you have some cardstock or thick paper on hand. I made it so you can print both papers double sided and it should align perfectly.. i stayed up all night figuring that out. ignore the awkward sqaure lol.. I made you a small prayer card since you mentioned you’re Catholic.
+    const message = `Before you download the PDF, please make sure you have some cardstock or thick paper on hand. I made it so you can print both papers double sided and it should align perfectly.. i stayed up all night figuring that out. ignore the awkward sqaure lol.. I made you a small prayer card since you mentioned you’re Catholic.
 
 I actually have all my sacraments except one—I’m hoping to receive my last one with you by my side. I also want to wish you luck and protection from God.
 
 I know it might sound a little crazy coming from me, someone who isn’t super religious, but it doesn’t hurt to believe, right? And if there really is an afterlife, I’d like to meet you in every single one.
 
-If this feels too strong or too much, please let me know—no hard feelings! (p.s click on the kitty) ( >_< )b` ;
+If this feels too strong or too much, please let me know—no hard feelings! (p.s click on the kitty) ( >_< )b`;
 
-      alert(message);
+    alert(message);
 
-      // Then start the download
-      window.location.href = "note/PCF.pdf";
-    });
-  </script>
+    // Create a temporary link to force download
+    const link = document.createElement("a");
+    link.href = "note/PCF.pdf"; // your file path
+    link.download = "Tommi_PrayerCard.pdf"; // desired download name
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+</script>
 </body>
 </html>
